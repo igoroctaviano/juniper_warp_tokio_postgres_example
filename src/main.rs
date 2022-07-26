@@ -1,6 +1,6 @@
+use juniper::http::graphiql::graphiql_source;
 use juniper::http::GraphQLRequest;
-use juniper::{RootNode, EmptySubscription};
-use juniper::{http::graphiql::graphiql_source};
+use juniper::{EmptySubscription, RootNode};
 use std::convert::Infallible;
 use std::sync::Arc;
 use tokio_postgres::{Client, NoTls};
@@ -159,9 +159,10 @@ async fn main() {
     ///// Database Connection /////////////////////
     ///////////////////////////////////////////////
 
-    let (client, connection) = tokio_postgres::connect("host=localhost user=postgres password=postgres", NoTls)
-        .await
-        .unwrap();
+    let (client, connection) =
+        tokio_postgres::connect("host=localhost user=postgres password=postgres", NoTls)
+            .await
+            .unwrap();
 
     // The connection object performs the actual communication with the database,
     // so spawn it off to run on its own.
@@ -189,7 +190,11 @@ async fn main() {
         .await
         .expect("Could not create table");
 
-    let schema = Arc::new(Schema::new(QueryRoot, MutationRoot, EmptySubscription::<Context>::new()));
+    let schema = Arc::new(Schema::new(
+        QueryRoot,
+        MutationRoot,
+        EmptySubscription::<Context>::new(),
+    ));
 
     // Create a warp filter for the schema
     let schema = warp::any().map(move || Arc::clone(&schema));

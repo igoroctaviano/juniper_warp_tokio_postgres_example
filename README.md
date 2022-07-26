@@ -1,16 +1,19 @@
 # juniper-warp-tokio-postgres-example
 
 ## Compile
+
 ```
 cargo build
 ```
 
 # Compile + Run
+
 ```
 cargo run
 ```
 
 ## Database
+
 ```
 docker run --rm -it -e POSTGRES_PASSWORD=postgres -p 5432:5432 postgres:alpine
 ```
