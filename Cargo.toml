@@ -1,0 +1,22 @@
+[package]
+name = "juniper-warp-tokio-postgres-example"
+version = "0.1.0"
+authors = ["Igor Octaviano <igoroctaviano@gmail.com>"]
+edition = "2018"
+license = "ISC"
+
+[dependencies]
+# Web server
+warp = "0.3.2"
+# An asynchronous runtime
+tokio = { version = "1.20.1", features = ["macros", "rt-multi-thread"] }
+# JSON library
+serde_json = "1.0"
+# A task, like a network call or computation, to be run asynchronously
+futures = { version = "0.3.1", features = ["compat"] }
+futures-macro = "=0.3.21"
+# GraphQL-specific functionality
+juniper = "0.15.9"
+# Access a database
+tokio-postgres = { version = "0.7.6", features = ["with-uuid-0_8"] }
+uuid = { version = "0.8.0", features = ["v4"] }
