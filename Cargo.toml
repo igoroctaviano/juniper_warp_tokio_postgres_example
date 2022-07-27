@@ -2,7 +2,7 @@
 name = "juniper-warp-tokio-postgres-example"
 version = "0.1.0"
 authors = ["Igor Octaviano <igoroctaviano@gmail.com>"]
-edition = "2022"
+edition = "2021"
 license = "ISC"
 
 [dependencies]
